@@ -1,6 +1,3 @@
-#Создайте модель множественной линейной регрессии потоков потоков паров воды за осенний период 2013
-#года по данным измерений методом турбулентной пульсацииодель множественной линейной регрессии 
-#потоков потоков паров воды за осенний период 2013 года по данным измерений методом турбулентной пульсации
 
 library(tidyverse)
 library(stringr)
@@ -44,7 +41,7 @@ summary(model1)
 
 anova(model1)
 
-#удаляем малозначимые показатели
+
 vars_cut=c("Tau", "LE", "rand_err_LE","rand_err_h2o_flux","H_strg",
              "co2_molar_density","co2_mole_fraction",
              "air_density","air_molar_volume","es",
@@ -67,7 +64,7 @@ cor_lrm=cor(drop_na(eddy_num) %>% as.data.frame %>% select(vars_cut))
 cor_lrm=sqrt(cor_lrm^2)
 
 
-#избавляемся от одного показателя в коррелирующих парах
+
 vars2=c("es", "un_Tau", "H_strg", "TKE", "co2_mole_fraction")
 correlation_formula2=as.formula(paste("h2o_flux~",paste(vars2,collapse="+"),sep=" "))
 
